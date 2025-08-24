@@ -2,7 +2,7 @@
  * =============================================================================
  * DumpSource2
  * Copyright (C) 2024 ValveResourceFormat Contributors
- * 
+ *
  * source2gen
  * Copyright 2024 neverlosecc
  * =============================================================================
@@ -63,7 +63,56 @@ std::map<std::string, std::vector<std::regex>> g_replaceMap{
 		}
 	},
 	{
+		"CVoiceContainerDefault",
+		{
+			std::regex(R"#(("m_nStreamingSize":) .*,)#"),
+			std::regex(R"#(("m_nRate":) .*,)#"),
+			std::regex(R"#(("m_nFormat":) .*,)#"),
+			std::regex(R"#(("m_nSampleCount":) .*,)#"),
+			std::regex(R"#(("m_nLoopStart":) .*,)#"),
+			std::regex(R"#(("m_nLoopEnd":) .*,)#"),
+			std::regex(R"#(("m_nChannels":) .*,)#"),
+		}
+	},
+	{
+		"CVoiceContainerLoopTrigger",
+		{
+			std::regex(R"#(("m_nStreamingSize":) .*,)#"),
+			std::regex(R"#(("m_nRate":) .*,)#"),
+			std::regex(R"#(("m_nFormat":) .*,)#"),
+			std::regex(R"#(("m_nSampleCount":) .*,)#"),
+			std::regex(R"#(("m_nLoopStart":) .*,)#"),
+			std::regex(R"#(("m_nLoopEnd":) .*,)#"),
+			std::regex(R"#(("m_nChannels":) .*,)#"),
+		}
+	},
+	{
+		"CVoiceContainerNull",
+		{
+			std::regex(R"#(("m_nStreamingSize":) .*,)#"),
+			std::regex(R"#(("m_nRate":) .*,)#"),
+			std::regex(R"#(("m_nFormat":) .*,)#"),
+			std::regex(R"#(("m_nSampleCount":) .*,)#"),
+			std::regex(R"#(("m_nLoopStart":) .*,)#"),
+			std::regex(R"#(("m_nLoopEnd":) .*,)#"),
+			std::regex(R"#(("m_nChannels":) .*,)#"),
+		}
+	},
+	{
 		"CVoiceContainerBlender",
+		{
+			std::regex(R"#(("m_nStreamingSize":) .*,)#"),
+			std::regex(R"#(("m_nRate":) .*,)#"),
+			std::regex(R"#(("m_nFormat":) .*,)#"),
+			std::regex(R"#(("m_nSampleCount":) .*,)#"),
+			std::regex(R"#(("m_nLoopStart":) .*,)#"),
+			std::regex(R"#(("m_nLoopEnd":) .*,)#"),
+			std::regex(R"#(("m_nChannels":) .*,)#"),
+			std::regex(R"#(("m_flBlendFactor":) .*,)#"),
+		}
+	},
+	{
+		"CVoiceContainerDecayingSineWave",
 		{
 			std::regex(R"#(("m_nStreamingSize":) .*,)#"),
 			std::regex(R"#(("m_nRate":) .*,)#"),
@@ -100,6 +149,18 @@ std::map<std::string, std::vector<std::regex>> g_replaceMap{
 	},
 	{
 		"CVoiceContainerStaticAdditiveSynth",
+		{
+			std::regex(R"#(("m_nStreamingSize":) .*,)#"),
+			std::regex(R"#(("m_nRate":) .*,)#"),
+			std::regex(R"#(("m_nFormat":) .*,)#"),
+			std::regex(R"#(("m_nSampleCount":) .*,)#"),
+			std::regex(R"#(("m_nLoopStart":) .*,)#"),
+			std::regex(R"#(("m_nLoopEnd":) .*,)#"),
+			std::regex(R"#(("m_nChannels":) .*,)#"),
+		}
+	},
+	{
+		"CVoiceContainerRealtimeFMSineWave",
 		{
 			std::regex(R"#(("m_nStreamingSize":) .*,)#"),
 			std::regex(R"#(("m_nRate":) .*,)#"),
@@ -178,7 +239,7 @@ std::map<std::string, std::vector<std::regex>> g_replaceMap{
 		"CVoxelVisibility",
 		{
 			std::regex(R"#(("m_nOffset":) .*,)#"),
-			std::regex(R"#(("m_nElementCount":) .*,)#"),
+			std::regex(R"#(("m_nElementCount":) .*)#"),
 		}
 	},
 	{
@@ -194,6 +255,7 @@ std::map<std::string, std::vector<std::regex>> g_replaceMap{
 			std::regex(R"#(("m_nStageProgressionTimerIncrease":) .*,)#"),
 			std::regex(R"#(("m_nTimerIncreaseExpireClicks":) .*,)#"),
 			std::regex(R"#(("m_nTimerIncreaseChance":) .*,)#"),
+			std::regex(R"#(("m_nIllusionManaCost":) .*,)#"),
 		}
 	},
 	{
@@ -213,6 +275,126 @@ std::map<std::string, std::vector<std::regex>> g_replaceMap{
 		"CSurvivorsPowerUpDefinition",
 		{
 			std::regex(R"#(("m_vWarmupEffectColor":)[\s\S]*?\],)#"),
+		}
+	},
+	{
+		"AimMatrixOpFixedSettings_t",
+		{
+			std::regex(R"#(("m_influenceRotations":)[\s\S]*?\],)#"),
+			std::regex(R"#(("m_influenceOffsets":)[\s\S]*?\],)#"),
+		}
+	},
+	{
+		"CLeanMatrixUpdateNode",
+		{
+			std::regex(R"#(("m_frameCorners":)[\s\S]*?\],)#"),
+		}
+	},
+	{
+		"CMotionGraphGroup",
+		{
+			std::regex(R"#(("m_nCentroids":) .*,)#"),
+			std::regex(R"#(("m_nDimensions":) .*,)#"),
+		}
+	},
+	{
+		"LookAtOpFixedSettings_t",
+		{
+			std::regex(R"#(("m_influenceRotations":)[\s\S]*?\],)#"),
+		}
+	},
+	{
+		"CDOTACandyShopDefinition",
+		{
+			std::regex(R"#(("m_unDefaultInventorySize":) .*,)#"),
+			std::regex(R"#(("m_unMaximumInventorySize":) .*,)#"),
+			std::regex(R"#(("m_unDefaultRerollCharges":) .*,)#"),
+			std::regex(R"#(("m_unDefaultMaxRerollCharges":) .*,)#"),
+			std::regex(R"#(("m_unFixedExchangeRecipeStartDate":) .*,)#"),
+			std::regex(R"#(("m_unFixedExchangeRecipeUpdateRateInSeconds":) .*,)#"),
+			std::regex(R"#(("m_unFixedExchangeRecipeDefaultCount":) .*,)#"),
+			std::regex(R"#(("m_unFixedExchangeRecipeMaximumCount":) .*,)#"),
+			std::regex(R"#(("m_unVariableExchangeInputCandyCount":) .*,)#"),
+			std::regex(R"#(("m_unVariableExchangeOutputCandyCount":) .*,)#"),
+			std::regex(R"#(("m_eExpireEvent":) .*,)#"),
+		}
+	},
+	{
+		"CDOTARoadToTIChallengeDefinition",
+		{
+			std::regex(R"#(("m_eEvent":) .*,)#"),
+			std::regex(R"#(("m_unTotalQuestPeriods":) .*,)#"),
+			std::regex(R"#(("m_unHeroesPerQuest":) .*,)#"),
+		}
+	},
+	{
+		"CSurvivorsPowerUpDefinition_MortimerKisses",
+		{
+			std::regex(R"#(("m_vWarmupEffectColor":)[\s\S]*?\],)#"),
+		}
+	},
+	{
+		"CSurvivorsSpawnerDestructiblesDefinition",
+		{
+			std::regex(R"#(("m_flPerpendicularWallSpacing":) .*,)#"),
+		}
+	},
+	{
+		"CSurvivorsSpawnerTowerDefinition",
+		{
+			std::regex(R"#(("m_flPerpendicularWallSpacing":) .*,)#"),
+		}
+	},
+	{
+		"CPhysSurfaceProperties",
+		{
+			std::regex(R"#(("m_nameHash":) .*,)#"),
+			std::regex(R"#(("m_baseNameHash":) .*,)#"),
+		}
+	},
+	{
+		"SkeletonAnimCapture_t__Frame_t",
+		{
+			std::regex(R"#(("m_flTime":) .*,)#"),
+		}
+	},
+	{
+		"CFeMorphLayer",
+		{
+			std::regex(R"#(("m_nNameHash":) .*,)#"),
+		}
+	},
+	{
+		"CSSDSMsg_ViewRender",
+		{
+			std::regex(R"#(("m_nFrameCount":) .*,)#"),
+		}
+	},
+	{
+		"VMixModDelayDesc_t",
+		{
+			std::regex(R"#(("m_flDelay":) .*,)#"),
+		}
+	},
+	{
+		"CVoiceContainerAmpedDecayingSineWave",
+		{
+			std::regex(R"#(("m_nRate":) .*,)#"),
+			std::regex(R"#(("m_nFormat":) .*,)#"),
+		}
+	},
+	{
+		"ClutterSceneObject_t",
+		{
+			std::regex(R"#(("m_vMinBounds":)[\s\S]*?\],)#"),
+			std::regex(R"#(("m_vMaxBounds":)[\s\S]*?\],)#"),
+		}
+	},
+	{
+		"ClutterTile_t",
+		{
+			std::regex(R"#(("m_vMinBounds":)[\s\S]*?\],)#"),
+			std::regex(R"#(("m_vMaxBounds":)[\s\S]*?\],)#"),
 		}
 	},
 };
@@ -284,13 +466,13 @@ std::optional<std::string> GetMetadataValue(const SchemaMetadataEntryData_t& ent
 				if (!entry.m_pData || !(*(void**)entry.m_pData) || !strcmp(metadataTargetName, "CastSphereSATParams_t")) return "Could not parse KV3 Defaults";
 
 				auto value = reinterpret_cast<GetKV3DefaultsFn>(*(void**)entry.m_pData)();
-				
+
 				if (!value) return "Could not parse KV3 Defaults";
 
 #ifdef WIN32
 				static auto SaveKV3AsJson = Modules::tier0->GetSymbol<SaveKV3AsJsonFn>("?SaveKV3AsJSON@@YA_NPEBVKeyValues3@@PEAVCUtlString@@1@Z");
 #else
-				static auto SaveKV3AsJson = Modules::tier0->GetSymbol<SaveKV3AsJsonFn>("_Z13SaveKV3AsJSONPK10KeyValues3P10CUtlStringS3_");	
+				static auto SaveKV3AsJson = Modules::tier0->GetSymbol<SaveKV3AsJsonFn>("_Z13SaveKV3AsJSONPK10KeyValues3P10CUtlStringS3_");
 #endif
 				if (!SaveKV3AsJson) {
 					spdlog::critical("SaveKV3AsJson not found");
