@@ -19,18 +19,6 @@ void ExitError(const char* pMsg, ...)
 	exit(1);
 }
 
-/* tier0 stub */
-
-void CThreadSpinRWLock::LockForRead(const char* pFileName, int nLine)
-{
-	// STUB
-}
-
-void CThreadSpinRWLock::UnlockRead(const char* pFileName, int nLine)
-{
-	// STUB
-}
-
 LoggingResponse_t LoggingSystem_LogAssert(const char* pMessageFormat, ...)
 {
 	return LR_ABORT;
