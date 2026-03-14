@@ -66,13 +66,13 @@ std::vector<AppSystemInfo> g_appSystems{
 	{ false, "soundsystem", SOUNDOPSYSTEMEDIT_INTERFACE_VERSION },
 	{ false, "vphysics2", VPHYSICS2HANDLE_INTERFACE_VERSION },
 	{ false, "worldrenderer", WORLD_RENDERER_MGR_INTERFACE_VERSION },
-	{ false, "assetsystem", ASSETSYSTEM_INTERFACE_VERSION, false, CS2_ONLY },
-	{ false, "assetpreview", ASSETPREVIEWSYSTEM_INTERFACE_VERSION, false, CS2_ONLY },
-	{ false, "resourcecompiler", RESOURCECOMPILERSYSTEM_INTERFACE_VERSION, false, CS2_ONLY },
-	{ false, "tools/hammer", "ToolSystem2_001", false, CS2_ONLY},
-	{ false, "tools/met", "ToolSystem2_001", false, CS2_ONLY},
-	{ false, "tools/pet", "ToolSystem2_001", false, CS2_ONLY},
-	{ false, "tools/cs2_item_editor", "ToolSystem2_001", false, CS2_ONLY},
+	{ false, "assetsystem", ASSETSYSTEM_INTERFACE_VERSION, false },
+	{ false, "assetpreview", ASSETPREVIEWSYSTEM_INTERFACE_VERSION, false },
+	{ false, "resourcecompiler", RESOURCECOMPILERSYSTEM_INTERFACE_VERSION, false },
+	{ false, "tools/hammer", "ToolSystem2_001", false },
+	{ false, "tools/met", "ToolSystem2_001", false },
+	{ false, "tools/pet", "ToolSystem2_001", false },
+	{ false, "tools/cs2_item_editor", "ToolSystem2_001", false },
 };
 
 std::map<std::string, IAppSystem*> g_factoryMap;
@@ -154,6 +154,13 @@ void InitializeAppSystems()
 #endif // !GAME_CS2
 
 		std::string path = appSystem.gameBin ? fmt::format("../../{}/bin/{}", GAME_PATH, PLATFORM_FOLDER) : "";
+
+		auto targetPath = (std::filesystem::current_path() / path / (MODULE_PREFIX + std::string(appSystem.moduleName) + MODULE_EXT)).lexically_normal().generic_string();
+
+		if (!std::filesystem::exists(targetPath)) {
+			spdlog::info("Skipping module as it does not exist: {}", targetPath);
+			continue;
+		}
 
 		spdlog::trace("Creating module {}", path);
 		CModule module(path.c_str(), appSystem.moduleName);
