@@ -66,7 +66,7 @@ int main(int argc, char** argv)
 
 	spdlog::info("Dumped successfully");
 
-	// skips atexit calls that cause a segfault on dota only while unregistering cvar callbacks
+	// skips atexit calls that cause a segfault only while unregistering cvar callbacks
 #ifdef WIN32
 	TerminateProcess(GetCurrentProcess(), 0);
 #else
