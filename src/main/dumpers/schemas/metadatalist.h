@@ -35,6 +35,7 @@ enum class MetadataValueType {
 	FLOAT,
 	VARNAME,
 	KV3DEFAULTS,
+	SEND_PROXY_RECIPIENTS_FILTER,
 	DEBUGGER_BREAKPOINT
 };
 
@@ -94,6 +95,7 @@ inline std::map<std::string, MetadataValueType> g_mapMetadataNameToValue
 	{ "MVDataUniqueMonotonicInt", MetadataValueType::STRING },
 	{ "MVectorIsSometimesCoordinate", MetadataValueType::STRING },
 	{ "MKV3TransferSaveOpsForField", MetadataValueType::STRING },
+	{ "MSaveOpsForField", MetadataValueType::STRING },
 
 	// INLINE STRING
 	{ "MDiskDataForResourceType", MetadataValueType::INLINE_STRING },
@@ -128,7 +130,10 @@ inline std::map<std::string, MetadataValueType> g_mapMetadataNameToValue
 	{ "MScriptDescription", MetadataValueType::VARNAME },
 
 	// KV3
-	{ "MGetKV3ClassDefaults", MetadataValueType::KV3DEFAULTS },	
+	{ "MGetKV3ClassDefaults", MetadataValueType::KV3DEFAULTS },
+
+	// MISC
+	{ "MNetworkSendProxyRecipientsFilter", MetadataValueType::SEND_PROXY_RECIPIENTS_FILTER }
 };
 
 } // namespace Dumpers::Schemas

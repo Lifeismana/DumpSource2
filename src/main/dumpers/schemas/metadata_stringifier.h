@@ -29,6 +29,13 @@ struct CSchemaVarName {
 	const char* m_pszType;
 };
 
+struct CSchemaSendProxyRecipientsFilter {
+	void* unk;
+	void* filterFunction;
+	const char* m_pszName;
+	void* unk2;
+};
+
 namespace Dumpers::Schemas
 {
 

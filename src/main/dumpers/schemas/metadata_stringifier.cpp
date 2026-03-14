@@ -95,6 +95,11 @@ std::optional<std::string> GetMetadataValue(const SchemaMetadataEntryData_t& ent
 				}
 				return fmt::format("\"{}\"", std::string(result, 8));
 			}
+			case MetadataValueType::SEND_PROXY_RECIPIENTS_FILTER:
+			{
+				auto& value = *static_cast<CSchemaSendProxyRecipientsFilter*>(entry.m_pData);
+				return fmt::format("\"{}\"", value.m_pszName);
+			}
 			case MetadataValueType::VARNAME:
 			{
 				auto value = static_cast<CSchemaVarName*>(entry.m_pData);
