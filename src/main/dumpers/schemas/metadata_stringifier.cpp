@@ -127,6 +127,7 @@ std::optional<std::string> GetMetadataValue(const SchemaMetadataEntryData_t& ent
 				return stringStream.str();
 			}
 			case MetadataValueType::KV3DEFAULTS:
+			{
 				typedef void* (*GetKV3DefaultsFn)();
 				typedef int (*SaveKV3AsJsonFn)(void* kv3, SimpleCUtlString& err, SimpleCUtlString& str);
 
@@ -156,6 +157,14 @@ std::optional<std::string> GetMetadataValue(const SchemaMetadataEntryData_t& ent
 				}
 
 				return "Could not parse KV3 Defaults";
+			}
+			case MetadataValueType::DEBUGGER_BREAKPOINT:
+			{
+#ifdef WIN32
+				__debugbreak();
+#endif
+				return "DEBUGGING";
+			}
 		}
 	}
 

@@ -34,7 +34,8 @@ enum class MetadataValueType {
 	INTEGER,
 	FLOAT,
 	VARNAME,
-	KV3DEFAULTS
+	KV3DEFAULTS,
+	DEBUGGER_BREAKPOINT
 };
 
 inline std::map<std::string, MetadataValueType> g_mapMetadataNameToValue
@@ -92,6 +93,7 @@ inline std::map<std::string, MetadataValueType> g_mapMetadataNameToValue
 	{ "MVDataOutlinerIconExpr", MetadataValueType::STRING },
 	{ "MVDataUniqueMonotonicInt", MetadataValueType::STRING },
 	{ "MVectorIsSometimesCoordinate", MetadataValueType::STRING },
+	{ "MKV3TransferSaveOpsForField", MetadataValueType::STRING },
 
 	// INLINE STRING
 	{ "MDiskDataForResourceType", MetadataValueType::INLINE_STRING },
@@ -126,7 +128,7 @@ inline std::map<std::string, MetadataValueType> g_mapMetadataNameToValue
 	{ "MScriptDescription", MetadataValueType::VARNAME },
 
 	// KV3
-	{ "MGetKV3ClassDefaults", MetadataValueType::KV3DEFAULTS }
+	{ "MGetKV3ClassDefaults", MetadataValueType::KV3DEFAULTS },	
 };
 
 } // namespace Dumpers::Schemas
