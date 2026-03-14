@@ -82,8 +82,10 @@ std::optional<std::string> GetMetadataValue(const SchemaMetadataEntryData_t& ent
 			case MetadataValueType::STRING:
 			{
 				auto value = *static_cast<const char**>(entry.m_pData);
-				Globals::stringsIgnoreStream << value << "\n";
-				return fmt::format("\"{}\"", value);
+				if (value) {
+					Globals::stringsIgnoreStream << value << "\n";
+				}
+				return fmt::format("\"{}\"", value ? value : "(NULL)");
 			}
 			case MetadataValueType::INTEGER:
 				return std::to_string(*static_cast<int*>(entry.m_pData));
@@ -103,7 +105,7 @@ std::optional<std::string> GetMetadataValue(const SchemaMetadataEntryData_t& ent
 			case MetadataValueType::SEND_PROXY_RECIPIENTS_FILTER:
 			{
 				auto& value = *static_cast<CSchemaSendProxyRecipientsFilter*>(entry.m_pData);
-				return fmt::format("\"{}\"", value.m_pszName);
+				return fmt::format("\"{}\"", value.m_pszName ? value.m_pszName : "(NULL)");
 			}
 			case MetadataValueType::VARNAME:
 			{
