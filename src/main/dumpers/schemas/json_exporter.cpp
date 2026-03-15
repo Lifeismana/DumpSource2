@@ -19,12 +19,8 @@
 
 #include "json_exporter.h"
 #include "globalvariables.h"
-#include "interfaces.h"
 #include <filesystem>
 #include <fstream>
-#include <map>
-#include <unordered_set>
-#include <algorithm>
 #include <optional>
 #include <spdlog/spdlog.h>
 #include <nlohmann/json.hpp>
@@ -157,7 +153,10 @@ void DumpClasses(const std::vector<IntermediateSchemaClass>& classes, json& clas
 		json classObj;
 		classObj["name"] = intermediateClass.name;
 		classObj["module"] = intermediateClass.module;
-		classObj["metadata"] = SerializeMetadataArray(intermediateClass.metadata);
+
+		auto classMetadataArr = SerializeMetadataArray(intermediateClass.metadata);
+		if (classMetadataArr.size())
+			classObj["metadata"] = std::move(classMetadataArr);
 
 		json parents = json::array();
 		for (const auto& parent : intermediateClass.parents)
@@ -168,7 +167,8 @@ void DumpClasses(const std::vector<IntermediateSchemaClass>& classes, json& clas
 			parents.push_back(std::move(parentObj));
 		}
 
-		classObj["parents"] = parents;
+		if(parents.size())
+			classObj["parents"] = std::move(parents);
 
 		json fields = json::array();
 		for (const auto& field : intermediateClass.fields)
@@ -178,10 +178,16 @@ void DumpClasses(const std::vector<IntermediateSchemaClass>& classes, json& clas
 			fieldObj["name"] = field.name;
 			fieldObj["offset"] = field.offset;
 			fieldObj["type"] = SerializeType(field.type);
-			fieldObj["metadata"] = SerializeMetadataArray(field.metadata);
+
+			auto fieldMetadataArr = SerializeMetadataArray(field.metadata);
+			if(fieldMetadataArr.size())
+				fieldObj["metadata"] = std::move(fieldMetadataArr);
+
 			fields.push_back(fieldObj);
 		}
-		classObj["fields"] = fields;
+
+		if (fields.size())
+			classObj["fields"] = std::move(fields);
 
 		classesArray.push_back(std::move(classObj));
 	}
@@ -196,7 +202,9 @@ void DumpEnums(const std::vector<IntermediateSchemaEnum>& enums, json& enumsArra
 		enumObj["module"] = intermediateEnum.module;
 		enumObj["alignment"] = intermediateEnum.stringAlignment;
 
-		enumObj["metadata"] = SerializeMetadataArray(intermediateEnum.metadata);
+		auto enumMetadataArr = SerializeMetadataArray(intermediateEnum.metadata);
+		if (enumMetadataArr.size())
+			enumObj["metadata"] = std::move(enumMetadataArr);
 
 		json members = json::array();
 		for (const auto& member : intermediateEnum.members)
@@ -205,10 +213,16 @@ void DumpEnums(const std::vector<IntermediateSchemaEnum>& enums, json& enumsArra
 			memberObj["name"] = member.name;
 			memberObj["value"] = member.value;
 
-			memberObj["metadata"] = SerializeMetadataArray(member.metadata);
+			auto memberMetadataArr = SerializeMetadataArray(member.metadata);
+			if (memberMetadataArr.size())
+				memberObj["metadata"] = std::move(memberMetadataArr);
+
 			members.push_back(std::move(memberObj));
 		}
-		enumObj["members"] = std::move(members);
+
+		if(members.size())
+			enumObj["members"] = std::move(members);
+
 		enumsArray.push_back(std::move(enumObj));
 	}
 }
