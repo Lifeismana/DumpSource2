@@ -43,6 +43,7 @@ void DumpClasses(CSchemaSystemTypeScope* typeScope, std::vector<IntermediateSche
 		IntermediateSchemaClass schemaClass{
 			.name = std::string(classInfo->m_pszName),
 			.module = std::string(classInfo->m_pszProjectName),
+			.size = classInfo->m_nSize
 		};
 
 		spdlog::trace("Dumping class: '{}'", classInfo->m_pszName);

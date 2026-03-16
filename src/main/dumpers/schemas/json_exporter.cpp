@@ -153,6 +153,7 @@ void DumpClasses(const std::vector<IntermediateSchemaClass>& classes, json& clas
 		json classObj;
 		classObj["name"] = intermediateClass.name;
 		classObj["module"] = intermediateClass.module;
+		classObj["size"] = intermediateClass.size;
 
 		auto classMetadataArr = SerializeMetadataArray(intermediateClass.metadata);
 		if (classMetadataArr.size())

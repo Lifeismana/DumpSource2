@@ -50,6 +50,7 @@ struct IntermediateSchemaClass
 {
 	std::string name;
 	std::string module;
+	int32_t size;
 	std::vector<IntermediateMetadata> metadata;
 	std::vector<IntermediateSchemaClassParent> parents;
 	std::vector<IntermediateSchemaClassField> fields;
