@@ -87,6 +87,7 @@ int main(int argc, char** argv)
 
 	std::ofstream file(Globals::outputPath / ".stringsignore");
 	file << Globals::stringsIgnoreStream.str();
+	file.close();
 
 	spdlog::info("Dumped successfully");
 

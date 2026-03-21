@@ -253,6 +253,7 @@ void Dump(const std::vector<IntermediateSchemaEnum>& enums, const std::vector<In
 
 	std::ofstream output(Globals::outputPath / "schemas.json");
 	output << root.dump(-1);
+	output.close();
 
 	spdlog::info("Wrote schemas.json ({} classes, {} enums)", classesArray.size(), enumsArray.size());
 }

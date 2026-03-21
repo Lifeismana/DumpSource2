@@ -283,6 +283,8 @@ void DumpConVars()
 
 		Globals::stringsIgnoreStream << cvar.GetName() << "\n";
 	}
+
+	output.close();
 }
 
 void DumpCommands()
@@ -320,6 +322,8 @@ void DumpCommands()
 
 		Globals::stringsIgnoreStream << command.GetName() << "\n";
 	}
+
+	output.close();
 }
 
 void Dump()
