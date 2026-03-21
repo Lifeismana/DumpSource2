@@ -107,7 +107,6 @@ inline std::map<std::string, MetadataValueType> g_mapMetadataNameToValue
 
 	// INTEGER
 	{ "MAlignment", MetadataValueType::INTEGER },
-	{ "MDiskDataForResourceType", MetadataValueType::INTEGER },
 	{ "MGenerateArrayKeynamesFirstIndex", MetadataValueType::INTEGER },
 	{ "MNetworkBitCount", MetadataValueType::INTEGER },
 	{ "MNetworkEncodeFlags", MetadataValueType::INTEGER },
@@ -117,7 +116,6 @@ inline std::map<std::string, MetadataValueType> g_mapMetadataNameToValue
 	{ "MParticleMinVersion", MetadataValueType::INTEGER },
 	{ "MParticleOperatorType", MetadataValueType::INTEGER },
 	{ "MPropertySortPriority", MetadataValueType::INTEGER },
-	{ "MResourceTypeForInfoType", MetadataValueType::INTEGER },
 	{ "MResourceVersion", MetadataValueType::INTEGER },
 	{ "MVDataNodeType", MetadataValueType::INTEGER },
 	{ "MVDataOverlayType", MetadataValueType::INTEGER },
@@ -131,7 +129,6 @@ inline std::map<std::string, MetadataValueType> g_mapMetadataNameToValue
 	{ "MNetworkVarNames", MetadataValueType::VARNAME },
 	{ "MNetworkVarTypeOverride", MetadataValueType::VARNAME },
 	{ "MParticleDomainTag", MetadataValueType::VARNAME },
-	{ "MScriptDescription", MetadataValueType::VARNAME },
 
 	// KV3
 	{ "MGetKV3ClassDefaults", MetadataValueType::KV3DEFAULTS },
