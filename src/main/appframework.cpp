@@ -44,6 +44,7 @@ std::vector<AppSystemInfo> g_appSystems{
 	{ true, "client", "Source2ClientConfig001" },
 	{ false, "engine2", SOURCE2ENGINETOSERVER_INTERFACE_VERSION },
 	{ true, "host", "GameSystem2HostHook" },
+	{ true, "modtools", "Source2ModTools001" },
 #ifdef GAME_CS2
 	{ true, "matchmaking", MATCHFRAMEWORK_INTERFACE_VERSION },
 #endif
@@ -63,15 +64,19 @@ std::vector<AppSystemInfo> g_appSystems{
 	{ false, "scenefilecache", "SceneFileCache002" },
 	{ false, "scenesystem", SCENEUTILS_INTERFACE_VERSION },
 	{ false, "soundsystem", SOUNDOPSYSTEMEDIT_INTERFACE_VERSION },
+	{ false, "steamaudio", STEAMAUDIO_INTERFACE_VERSION, false },
 	{ false, "vphysics2", VPHYSICS2HANDLE_INTERFACE_VERSION },
 	{ false, "worldrenderer", WORLD_RENDERER_MGR_INTERFACE_VERSION },
 	{ false, "assetsystem", ASSETSYSTEM_INTERFACE_VERSION, false },
 	{ false, "assetpreview", ASSETPREVIEWSYSTEM_INTERFACE_VERSION, false },
+	{ false, "assetbrowser", ASSETBROWSERSYSTEM_INTERFACE_VERSION, false },
 	{ false, "resourcecompiler", RESOURCECOMPILERSYSTEM_INTERFACE_VERSION, false },
 	{ false, "tools/hammer", "ToolSystem2_001", false },
 	{ false, "tools/met", "ToolSystem2_001", false },
 	{ false, "tools/pet", "ToolSystem2_001", false },
 	{ false, "tools/cs2_item_editor", "ToolSystem2_001", false },
+	{ false, "tools/workshopmanager", "ToolSystem2_001", false },
+	{ false, "tools/modeldoc_editor", "ToolSystem2_ModelDoc", false },
 };
 
 std::map<std::string, IAppSystem*> g_factoryMap;
