@@ -47,6 +47,13 @@ void DumpClasses(CSchemaSystemTypeScope* typeScope, std::vector<IntermediateSche
 		};
 
 		spdlog::trace("Dumping class: '{}'", classInfo->m_pszName);
+#ifdef GAME_DOTA
+		if (!classInfo->m_pszCPPName)
+			spdlog::warn("Class '{}' has no cppname", classInfo->m_pszName);
+		else if (strcmp(classInfo->m_pszName, classInfo->m_pszCPPName) != 0)
+			spdlog::warn("Class '{}' has different cppname '{}'", classInfo->m_pszName, classInfo->m_pszCPPName);
+#endif
+
 		for (uint16_t k = 0; k < classInfo->m_nStaticMetadataCount; k++)
 		{
 			const auto& metadataEntry = classInfo->m_pStaticMetadata[k];
