@@ -31,6 +31,8 @@
 namespace Dumpers::Schemas::FilesystemExporter
 {
 
+static std::map<std::string, int> g_unknownMetadataCounts;
+
 std::string CommentBlock(std::string str)
 {
 	size_t pos = 0;
@@ -54,7 +56,10 @@ void OutputMetadataEntry(const IntermediateMetadata& entry, std::ofstream& outpu
 			output << " = " << CommentBlock(*entry.stringValue);
 		}
 		else
+		{
+			g_unknownMetadataCounts[entry.name]++;
 			output << " (UNKNOWN FOR PARSER)";
+		}
 	}
 
 	output << "\n";
@@ -184,6 +189,9 @@ void Dump(const std::vector<IntermediateSchemaEnum>& enums, const std::vector<In
 
 	DumpClasses(classes, schemaPath, foundFiles);
 	DumpEnums(enums, schemaPath, foundFiles);
+
+	for (const auto& [name, count] : g_unknownMetadataCounts)
+		spdlog::warn("Metadata '{}' has unknown value for parser ({} usages)", name, count);
 
 	for (const auto& entry : std::filesystem::directory_iterator(schemaPath))
 	{

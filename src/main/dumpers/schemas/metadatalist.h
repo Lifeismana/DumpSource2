@@ -100,6 +100,12 @@ inline std::map<std::string, MetadataValueType> g_mapMetadataNameToValue
 	{ "MPulseEditorSubHeaderText", MetadataValueType::STRING },
 	{ "MPropertyEditContextOverrideKey", MetadataValueType::STRING },
 	{ "MPropertyEditContextOverrideValue", MetadataValueType::STRING },
+	{ "MVDataClassGroup", MetadataValueType::STRING },
+	{ "MVDataOutlinerDetailExpr", MetadataValueType::STRING },
+	{ "MVDataOutlinerLabelExpr", MetadataValueType::STRING },
+	{ "MVDataOutlinerNameExpr", MetadataValueType::STRING },
+	{ "MVDataPreviewWidget", MetadataValueType::STRING },
+	{ "MWorkshopEnumeratorTagName", MetadataValueType::STRING },
 
 	// INLINE STRING
 	{ "MDiskDataForResourceType", MetadataValueType::INLINE_STRING },
@@ -117,8 +123,11 @@ inline std::map<std::string, MetadataValueType> g_mapMetadataNameToValue
 	{ "MParticleOperatorType", MetadataValueType::INTEGER },
 	{ "MPropertySortPriority", MetadataValueType::INTEGER },
 	{ "MResourceVersion", MetadataValueType::INTEGER },
+	{ "MSaveFlags", MetadataValueType::INTEGER },
+	{ "MSmartPropClassVersion", MetadataValueType::INTEGER },
 	{ "MVDataNodeType", MetadataValueType::INTEGER },
 	{ "MVDataOverlayType", MetadataValueType::INTEGER },
+	{ "MVDataPromoteField", MetadataValueType::INTEGER },
 
 	// FLOAT
 	{ "MNetworkMaxValue", MetadataValueType::FLOAT },
