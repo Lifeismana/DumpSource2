@@ -239,6 +239,8 @@ void Dump(const std::vector<IntermediateSchemaEnum>& enums, const std::vector<In
 	DumpClasses(classes, classesArray);
 	DumpEnums(enums, enumsArray);
 
+	root["generator"] = "https://github.com/ValveResourceFormat/DumpSource2";
+
 	if (!Globals::sourceRevision.empty())
 		root["revision"] = std::stoi(Globals::sourceRevision);
 
