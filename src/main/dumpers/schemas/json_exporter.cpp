@@ -232,7 +232,7 @@ void Dump(const std::vector<IntermediateSchemaEnum>& enums, const std::vector<In
 {
 	spdlog::info("Dumping schemas to json");
 
-	json root;
+	nlohmann::ordered_json root;
 	json classesArray = json::array();
 	json enumsArray = json::array();
 
