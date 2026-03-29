@@ -32,18 +32,7 @@
 #include <modules.h>
 #include <vector>
 #include <regex>
-
-class SimpleCUtlString
-{
-public:
-	const char* Get()
-	{
-		return m_pString;
-	}
-
-private:
-	const char* m_pString = nullptr;
-};
+#include "utils/common.h"
 
 namespace Dumpers::Schemas
 {

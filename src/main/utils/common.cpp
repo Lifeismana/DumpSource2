@@ -1,3 +1,4 @@
+#include "common.h"
 #include <cstdarg>
 #include <stdlib.h>
 #include <stdio.h>
@@ -6,6 +7,10 @@
 #include "bufferstring.h"
 #include "utlbuffer.h"
 #include <spdlog/spdlog.h>
+
+const char* SimpleCUtlString::Get() {
+	return m_pString;
+}
 
 void ExitError(const char* pMsg, ...)
 {

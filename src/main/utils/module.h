@@ -186,9 +186,13 @@ public:
 	}
 
 	template <typename T>
-	T GetSymbol(const char* name)
+	T GetSymbol(const char* name) const
 	{
-		return (T)dlsym(m_hModule, name);
+		auto ptr = (T)dlsym(m_hModule, name);
+		if (!ptr)
+			ExitError("Could not find %s in %s", name, m_pszModule);
+
+		return ptr;
 	}
 #ifdef _WIN32
 	void InitializeSections();

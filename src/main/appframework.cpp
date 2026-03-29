@@ -183,5 +183,7 @@ void InitializeAppSystems()
 
 			fn(SCHEMASYSTEM_INTERFACE_VERSION, Interfaces::schemaSystem);
 		}
+
+		Modules::allModules.emplace_back(std::move(module));
 	}
 }

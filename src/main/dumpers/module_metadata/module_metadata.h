@@ -1,7 +1,7 @@
 /**
  * =============================================================================
  * DumpSource2
- * Copyright (C) 2024 ValveResourceFormat Contributors
+ * Copyright (C) 2026 ValveResourceFormat Contributors
  * =============================================================================
  *
  * This program is free software; you can redistribute it and/or modify it under
@@ -18,15 +18,9 @@
  */
 #pragma once
 
-#include <memory>
-#include "utils/module.h"
-#include <vector>
-
-namespace Modules
+namespace Dumpers::ModuleMetadata
 {
-inline std::vector<CModule> allModules;
 
-inline std::unique_ptr<CModule> schemaSystem = nullptr;
-inline std::unique_ptr<CModule> tier0 = nullptr;
+void Dump();
 
-} // namespace Modules
+} // namespace Dumpers::ModuleMetadata
